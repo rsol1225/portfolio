@@ -10,6 +10,16 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Landing page -->
+  <div id="landing" class="landing">
+    <span class="landing-name">Roma Solapurkar</span>
+    <div class="landing-center">
+      <h1 class="landing-title"><span id="typing-text"></span><span class="typing-cursor" aria-hidden="true">|</span></h1>
+      <p class="landing-subtitle">Software Engineer | AI/ML Enthusiast | Learner for Life</p>
+      <button type="button" class="landing-btn" id="landing-btn">Press to Continue</button>
+    </div>
+  </div>
+
   <nav class="nav">
     <a href="#about" class="nav-link">About</a>
     <a href="#experience" class="nav-link">Experience</a>
@@ -29,7 +39,7 @@
           <img src="Resources/Photo.jpeg" alt="Photo of Roma Solapurkar" class="about-photo">
         </div>
         <div class="about-text">
-          <h1 class="about-title">Hey, I'm <span class="accent">Roma Solapurkar</span></h1>
+          <h1 class="about-title">Hi, I'm <span class="accent">Roma Solapurkar</span></h1>
           <p class="about-description">
             I graduated from UC Santa Cruz with a Bachelor's degree in Computer Science. 
             Throughout my time here, I've delved into different applications of computer science. 
@@ -220,6 +230,39 @@
   </footer>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Typing effect: "Welcome to my Porfolio"
+    (function () {
+      var el = document.getElementById('typing-text');
+      if (!el) return;
+      var phrase = 'Welcome to my Portfolio';
+      var i = 0;
+      var speed = 80;
+      function type() {
+        if (i < phrase.length) {
+          el.textContent += phrase[i];
+          i++;
+          setTimeout(type, speed);
+        }
+      }
+      type();
+    })();
+
+    // Landing: redirect to about after max 20s, or on Welcome click / click anywhere
+    (function () {
+      var landing = document.getElementById('landing');
+      var btn = document.getElementById('landing-btn');
+      var done = false;
+      function goToAbout() {
+        if (done) return;
+        done = true;
+        landing.classList.add('landing-hidden');
+        document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+      }
+      if (btn) btn.addEventListener('click', function (e) { e.stopPropagation(); goToAbout(); });
+      landing.addEventListener('click', goToAbout);
+      setTimeout(goToAbout, 3000);
+    })();
   </script>
 </body>
 </html>

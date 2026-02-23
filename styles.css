@@ -20,6 +20,90 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Landing page */
+.landing {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.landing.landing-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.landing-name {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+.landing-center {
+  text-align: center;
+}
+
+.landing-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.5rem, 10vw, 4.5rem);
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  margin: 0 0 0.5rem 0;
+  min-height: 1.2em;
+}
+
+.typing-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 0.8s step-end infinite;
+  color: var(--accent);
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.landing-title .typing-cursor {
+  font-size: 0.9em;
+}
+
+.landing-subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 0 0 1.75rem 0;
+  letter-spacing: 0.02em;
+}
+
+.landing-btn {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.65rem 1.5rem;
+  background: var(--accent);
+  color: var(--surface);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.landing-btn:hover {
+  background: #244736;
+  transform: translateY(-1px);
+}
+
 body {
   font-family: 'Outfit', sans-serif;
   font-weight: 400;
