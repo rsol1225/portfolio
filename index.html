@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/fonts/devicon.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,15 +16,14 @@
     <span class="landing-name">Roma Solapurkar</span>
     <div class="landing-center">
       <h1 class="landing-title"><span id="typing-text"></span><span class="typing-cursor" aria-hidden="true">|</span></h1>
-      <p class="landing-subtitle">Software Engineer | AI/ML Enthusiast | Learner for Life</p>
-      <button type="button" class="landing-btn" id="landing-btn">Press to Continue</button>
+      <p class="landing-subtitle">software engineer</p>
+      <button type="button" class="landing-btn" id="landing-btn">Welcome</button>
     </div>
   </div>
 
   <nav class="nav">
     <a href="#about" class="nav-link">About</a>
     <a href="#experience" class="nav-link">Experience</a>
-    <a href="#education" class="nav-link">Education</a>
     <a href="#projects" class="nav-link">Projects</a>
     <a href="#leadership" class="nav-link">Leadership</a>
     <a href="#volunteering" class="nav-link">Volunteering</a>
@@ -35,11 +35,18 @@
     <!-- About -->
     <section id="about" class="section about-section">
       <div class="about-content">
-        <div class="about-photo-wrap">
-          <img src="Resources/Photo.jpeg" alt="Photo of Roma Solapurkar" class="about-photo">
+        <div class="about-left">
+          <div class="about-photo-wrap">
+            <img src="Resources/Photo.jpeg" alt="Photo of Roma Solapurkar" class="about-photo">
+          </div>
+          <div class="about-education">
+            <h3 class="about-education-title">Education</h3>
+            <p class="about-education-item"><strong>M.S., Artificial Intelligence</strong><br>Johns Hopkins University · 2026 – 2029</p>
+            <p class="about-education-item"><strong>B.S., Computer Science</strong><br>University of California, Santa Cruz · 2021 – 2025</p>
+          </div>
         </div>
         <div class="about-text">
-          <h1 class="about-title">Hi, I'm <span class="accent">Roma Solapurkar</span></h1>
+          <h1 class="about-title">Hey, I'm <span class="accent">Roma Solapurkar</span></h1>
           <p class="about-description">
             I graduated from UC Santa Cruz with a Bachelor's degree in Computer Science. 
             Throughout my time here, I've delved into different applications of computer science. 
@@ -58,6 +65,17 @@
             <a href="https://medium.com/@romasblog" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Medium">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
             </a>
+            <a href="Resources/Resume.pdf" download class="resume-download">Download Resume</a>
+          </div>
+          <h3 class="skills-title">Skills</h3>
+          <div class="skills-list">
+            <span class="skill-item" title="Java"><i class="devicon-java-plain colored"></i><span>Java</span></span>
+            <span class="skill-item" title="Kubernetes"><i class="devicon-kubernetes-plain colored"></i><span>Kubernetes</span></span>
+            <span class="skill-item" title="Docker"><i class="devicon-docker-plain colored"></i><span>Docker</span></span>
+            <span class="skill-item" title="Apache NiFi"><i class="devicon-apache-plain colored"></i><span>NiFi</span></span>
+            <span class="skill-item" title="RabbitMQ"><span class="skill-icon-text">MQ</span><span>RabbitMQ</span></span>
+            <span class="skill-item" title="Spring Boot"><i class="devicon-spring-plain colored"></i><span>Spring Boot</span></span>
+            <span class="skill-item" title="Linux"><i class="devicon-linux-plain colored"></i><span>Linux</span></span>
           </div>
         </div>
       </div>
@@ -106,10 +124,11 @@
             <span class="card-location">Santa Cruz, CA</span>
             <span class="card-date">September 2025 - January 2025</span>
           </div>
-          <p class="card-desc">Automated a workflow for engineers to run test plans on waveform files through the cloud by creating a plugin for Test Automation software, which generates waveform files using SCPI commands. The environment for the runner is packaged using Boxstarter and Chocolatey.</p>
-          <a href="Resources/Keysight Poster.png" download>Poster Board</a>
-          <br>
-          <a href="Resources/Keysight Desktop Application.pdf"download>Presentation</a>
+          <p class="card-desc">What you did and what impact you had. Keep it concise but impactful.</p>
+          <div class="card-links">
+            <a href="Resources/Keysight Poster.png" download class="card-link">Poster</a>
+            <a href="Resources/Keysight Desktop Application.pdf" download class="card-link">Presentation</a>
+          </div>
         </article>
         <article class="card">
           <div class="card-meta">
@@ -121,34 +140,6 @@
             <span class="card-date">June 2024 - September 2024</span>
           </div>
           <p class="card-desc">What you did and what impact you had. Keep it concise but impactful.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section id="education" class="section">
-      <h2 class="section-title">Education</h2>
-      <div class="cards">
-        <article class="card">
-          <div class="card-meta">
-            <span class="card-role">Masters, Aritficial Intelligence</span>
-            <span class="card-company">Johns Hopkins University</span>
-          </div>
-          <div class="card-details">
-            <span class="card-date">2026 - 2029</span>
-          </div>
-          <p class="card-desc">Relevant coursework, honors, or activities.</p>
-        </article>
-        <article class="card">
-          <div class="card-meta">
-            <span class="card-role">Bachelors, Computer Science</span>
-            <span class="card-company">University of California - Santa Cruz</span>
-          </div>
-          <div class="card-details">
-            <span class="card-location">Santa Cruz, California</span>
-            <span class="card-date">2021 - 2025</span>
-          </div>
-          <p class="card-desc">Relevant coursework, honors, or activities.</p>
         </article>
       </div>
     </section>
@@ -261,7 +252,7 @@
       }
       if (btn) btn.addEventListener('click', function (e) { e.stopPropagation(); goToAbout(); });
       landing.addEventListener('click', goToAbout);
-      setTimeout(goToAbout, 3000);
+      setTimeout(goToAbout, 20000);
     })();
   </script>
 </body>
