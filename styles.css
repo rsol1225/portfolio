@@ -323,8 +323,10 @@ main {
   border-radius: 6px;
 }
 
-.skill-item i.devicon {
+.skill-item i[class^="devicon-"],
+.skill-item i[class*=" devicon-"] {
   font-size: 1.25rem;
+  line-height: 1;
 }
 
 .skill-icon-text {
