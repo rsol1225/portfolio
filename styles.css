@@ -551,3 +551,35 @@ main {
 .footer p {
   margin: 0;
 }
+
+.zoom-container input {
+  display: none;
+}
+
+
+/* Enlarged state when checked */
+.zoom-container input:checked + img {
+  transform: scale(2); /* Zoom by 2x */
+  position: relative;
+  z-index: 100;
+}
+
+.zoom-container img {
+  width: 300px;
+  cursor: pointer;
+  
+  /* --- The Rounded Edges --- */
+  border-radius: 15px;      /* Adjust px for more/less roundness */
+  overflow: hidden;         /* Clips the image to the rounded shape */
+  
+  /* Existing hover/light-up logic */
+  transition: all 0.3s ease;
+  filter: brightness(0.9);
+}
+
+.zoom-container img:hover {
+  filter: brightness(1.15);
+  /* The glow now follows the rounded shape */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 255, 255, 0.3);
+  transform: scale(1.02);   /* Subtle "pop" on hover */
+}
