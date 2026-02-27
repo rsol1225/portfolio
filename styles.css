@@ -583,3 +583,110 @@ main {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 255, 255, 0.3);
   transform: scale(1.02);   /* Subtle "pop" on hover */
 }
+.career-timeline {
+  position: relative;
+  width: 95%;
+  height: 200px;
+  margin: 2rem 0 -2rem 0; 
+  overflow: visible;
+}
+
+.squiggle-svg {
+  width: 95%;
+  height: 100px;
+  overflow: visible;
+  display: block;
+}
+
+/* 1. Initial State (Hidden) */
+.squiggle-path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+  /* These match the pathLength="1" */
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1; 
+  transition: stroke-dashoffset 0.1s; /* Prevents a 'flash' on load */
+}
+
+/* 2. Animation Trigger */
+.career-timeline.is-active .squiggle-path {
+  animation: draw-squiggle 3s ease-in-out forwards;
+}
+
+@keyframes draw-squiggle {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Dots and Labels */
+.node-dot {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 3;
+  transform: scale(0);
+  transform-origin: center;
+}
+
+.career-timeline.is-active .node-dot {
+  animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Apply staggered delays to dots */
+.node-dot:nth-child(1) { animation-delay: 0.3s; }
+.node-dot:nth-child(2) { animation-delay: 0.9s; }
+.node-dot:nth-child(3) { animation-delay: 1.5s; }
+.node-dot:nth-child(4) { animation-delay: 2.1s; }
+.node-dot:nth-child(5) { animation-delay: 2.7s; }
+
+/* Labels Positioned Higher */
+.timeline-labels {
+  position: absolute;
+  top: -50px; /* Pulls everything up */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.label-group {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 150px; /* Gap between top and bottom text */
+  opacity: 0;
+}
+
+.career-timeline.is-active .label-group {
+  animation: fade-in-text 0.5s ease-out forwards;
+}
+
+/* Match delays with dots */
+.label-group:nth-child(1) { animation-delay: 0.3s; }
+.label-group:nth-child(2) { animation-delay: 0.9s; }
+.label-group:nth-child(3) { animation-delay: 1.5s; }
+.label-group:nth-child(4) { animation-delay: 2.1s; }
+.label-group:nth-child(5) { animation-delay: 2.7s; }
+
+@keyframes pop-in { to { transform: scale(1); } }
+@keyframes fade-in-text { 
+  from { opacity: 0; transform: translate(-50%, -40%); }
+  to { opacity: 1; transform: translate(-50%, -50%); } 
+}
+
+.description {
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 20px; /* Pill shape */
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border: 1px solid rgba(45, 90, 74, 0.1); /* Subtle accent border */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
