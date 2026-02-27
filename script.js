@@ -5,7 +5,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
     (function () {
       var el = document.getElementById('typing-text');
       if (!el) return;
-      var phrase = 'Welcome to my Portfolio';
+      var phrase = 'Welcome to my Website';
       var i = 0;
       var speed = 80;
       function type() {
