@@ -219,6 +219,7 @@ main {
   box-shadow: var(--shadow);
   aspect-ratio: 1;
   max-width: 200px;
+  
 }
 
 .about-photo {

@@ -59,3 +59,37 @@ const target = document.querySelector('.js-scroll-trigger');
 if (target) {
   observer.observe(target);
 }
+
+//Shuffle photos
+
+const photos = [
+  "Resources/Photo.jpeg", 
+  "Resources/RedwoodRun.png", 
+  "Resources/DogPawPainting.png",
+  "Resources/DogHeartPainting.png"
+];
+
+let currentIndex = 0;
+
+// 2. Select the image using its class name
+const photoElement = document.querySelector(".about-photo");
+
+function shufflePhoto() {
+  // Increment index and loop back to 0 if at the end
+  currentIndex = (currentIndex + 1) % photos.length;
+  
+  // 3. Update the 'src' to the new image path
+  photoElement.src = photos[currentIndex];
+}
+
+setTimeout(() => {
+    
+  // 2. Change the photo for the first time immediately after the delay
+  shufflePhoto();
+
+  // 3. Then start the 3-second (3000ms) loop
+  setInterval(shufflePhoto, 3000);
+  
+
+}, 5000); 
+
