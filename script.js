@@ -75,19 +75,12 @@ let currentIndex = 0;
 const photoElement = document.querySelector(".about-photo");
 
 function shufflePhoto() {
-  // Increment index and loop back to 0 if at the end
   currentIndex = (currentIndex + 1) % photos.length;
-  
-  // 3. Update the 'src' to the new image path
   photoElement.src = photos[currentIndex];
 }
 
 setTimeout(() => {
-    
-  // 2. Change the photo for the first time immediately after the delay
   shufflePhoto();
-
-  // 3. Then start the 3-second (3000ms) loop
   setInterval(shufflePhoto, 3000);
   
 
