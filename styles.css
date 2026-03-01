@@ -146,6 +146,7 @@ main {
   max-width: 800px;
   margin: 0 auto;
   padding: 6rem 1.5rem 4rem;
+  
 }
 
 .section {
@@ -547,6 +548,7 @@ main {
 }
 
 .contact-btn {
+  align-self: center;
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background: var(--accent);
