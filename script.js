@@ -61,7 +61,6 @@ if (target) {
 }
 
 //Shuffle photos
-
 const photos = [
   "Resources/Photo.jpeg", 
   "Resources/RedwoodRun.png", 
@@ -85,4 +84,29 @@ setTimeout(() => {
   
 
 }, 5000); 
+
+// Loading the different section
+document.addEventListener('DOMContentLoaded', () => {
+  const options = {
+    threshold: 0.15, // Trigger when 15% of the section is visible
+    rootMargin: "0px 0px -50px 0px" // Triggers slightly before it hits the bottom
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        // We keep observing so it re-triggers if they scroll up and down, 
+        // or use observer.unobserve(entry.target) to only happen once.
+      }
+    });
+  }, options);
+
+  // Target all your sections and cards
+  const targets = document.querySelectorAll('section, .card, .organizations-section, .about-education-title');
+  targets.forEach(target => {
+    target.classList.add('reveal'); 
+    observer.observe(target);
+  });
+});
 
