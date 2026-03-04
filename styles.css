@@ -535,14 +535,26 @@ main {
 
 /* Contact */
 
+.section-title-contact {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--border);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
 .contact-section {
+    background: var(--accent);
+    color: var(--surface);
     text-align: center;
-    padding: 2rem 0;
+    padding: 4rem 1.5rem;
+    margin-top: 4rem;
 }
 
 .contact-intro {
     font-size: 1.05rem;
-    color: var(--text-muted);
+    color: var(--accent-soft);
     margin-bottom: 1.25rem;
     max-width: 42ch;
     margin-left: auto;
@@ -567,8 +579,8 @@ main {
     align-self: center;
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    background: var(--accent);
-    color: var(--surface);
+    background: var(--border);
+    color: var(--accent);
     font-size: 0.95rem;
     font-weight: 500;
     text-decoration: none;
@@ -577,7 +589,7 @@ main {
 }
 
 .contact-btn:hover {
-    background: #244736;
+    background: #5f8a75;
     transform: translateY(-1px);
 }
 
