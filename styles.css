@@ -231,7 +231,7 @@ main {
     overflow: hidden;
     box-shadow: var(--shadow);
     aspect-ratio: 1;
-    max-width: 800px;
+    max-width: 300px;
 }
 
 .about-photo {
