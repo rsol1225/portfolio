@@ -2,8 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const photos = [
         "Resources/Photo.jpeg",
-        "Resources/DroneEducation.png",
-        "Resources/Hiking.png"
+        "Resources/DroneEducation.png"
     ];
 
     let currentIndex = 0;
