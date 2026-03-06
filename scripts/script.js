@@ -1,3 +1,10 @@
+//Skip landing page if coming from another page
+// Skip landing if coming from another page via #about
+if (window.location.hash === '#about') {
+    landing.classList.add('landing-hidden');
+    done = true;
+}
+
 //Shuffle photos
 document.addEventListener("DOMContentLoaded", () => {
     const photos = [

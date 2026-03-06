@@ -147,6 +147,21 @@ body {
     color: var(--accent);
 }
 
+.nav-home {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.nav-home:hover {
+    color: var(--accent);
+}
+
 
 /* Main */
 
