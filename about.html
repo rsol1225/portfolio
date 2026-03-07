@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,3 +96,488 @@
 </body>
 
 </html>
+=======
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background — Roma Solapurkar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/fonts/devicon.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── Page header ── */
+        
+        .bg-header {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .bg-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 3px solid var(--accent-soft);
+        }
+        
+        .bg-header-text h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+        }
+        
+        .bg-header-text p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .bg-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.65rem;
+        }
+        
+        .bg-tag {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            background: var(--accent);
+            color: #fff;
+        }
+        
+        .bg-tag.soft {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+        /* ── Divider ── */
+        
+        .bg-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 2rem 0;
+        }
+        /* ── Two column: education + orgs ── */
+        
+        .bg-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        @media (max-width: 600px) {
+            .bg-two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .bg-section-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.85rem;
+        }
+        /* ── Education cards ── */
+        
+        .edu-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 0.9rem 1.1rem;
+            margin-bottom: 0.65rem;
+        }
+        
+        .edu-card:last-child {
+            margin-bottom: 0;
+        }
+        
+        .edu-card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.2rem;
+        }
+        
+        .edu-card-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        .edu-card-year {
+            font-size: 0.72rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-top: 0.3rem;
+        }
+        /* ── Org badges ── */
+        
+        .org-badges-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.75rem;
+        }
+        
+        .org-badge {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+            cursor: default;
+            position: relative;
+            animation: pulse-badge 2s ease-out infinite;
+        }
+        
+        @keyframes pulse-badge {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(45, 90, 74, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 8px rgba(45, 90, 74, 0);
+            }
+        }
+        
+        .org-badge-tooltip {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-4px);
+            background: var(--text);
+            color: white;
+            border-radius: 8px;
+            padding: 0.4rem 0.75rem;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s, transform 0.2s;
+            pointer-events: none;
+            text-align: center;
+            line-height: 1.5;
+            z-index: 10;
+        }
+        
+        .org-badge:hover .org-badge-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .org-badge-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-bottom-color: var(--text);
+        }
+        /* ── Skills + Hobbies side by side ── */
+        
+        .bg-bottom-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        @media (max-width: 600px) {
+            .bg-bottom-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* ── Skills ── */
+        
+        .skills-groups {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+        
+        .skills-group-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            margin-bottom: 0.45rem;
+        }
+        
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+        
+        .skill-tag {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 400;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border: 1px solid transparent;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        
+        .skill-tag:hover {
+            border-color: var(--accent);
+            background: #fff;
+        }
+        /* ── Hobbies ── */
+        
+        .hobby-photo-wrap {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+        
+        .hobby-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        
+        .hobby-photo.active {
+            opacity: 1;
+        }
+        
+        .hobby-photo.active {
+            opacity: 1;
+        }
+        
+        .hobby-dots {
+            display: flex;
+            gap: 0.4rem;
+            justify-content: center;
+        }
+        
+        .hobby-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--border);
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        
+        .hobby-dot.active {
+            background: var(--accent);
+        }
+        
+        .hobby-description {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-top: 0.75rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <a href="index.html#about" class="nav-home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+        </a>
+        <a href="about.html" class="nav-link">Background</a>
+        <a href="#" class="nav-link">Experience</a>
+        <a href="#" class="nav-link">Projects</a>
+        <a href="#" class="nav-link">Writing</a>
+    </nav>
+
+    <main>
+        <section class="section">
+
+            <!-- ── Hero: photo + bio + tags ── -->
+            <div class="bg-header">
+                <img src="Resources/Photo.jpeg" alt="Photo of Roma Solapurkar" class="bg-photo">
+                <div class="bg-header-text">
+                    <h1>A little about me</h1>
+                    <p>
+                        Growing up in Silicon Valley, I watched innovation unfold around me and it sparked a curiosity I've never been able to shake. Today, I work as an Associate Software Engineer at L3Harris Technologies, where I build software at the intersection of defense
+                        and technology. I'm drawn to problems that are hard, work that matters, and the space where engineering meets real-world impact.
+                    </p>
+                    <div class="bg-tags">
+                        <span class="bg-tag">Software Engineer at L3Harris Technologies</span>
+                        <span class="bg-tag soft">UC Santa Cruz Alumni</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-divider"></div>
+
+            <!-- ── Education + Organizations ── -->
+            <div class="bg-two-col">
+
+                <div>
+                    <div class="bg-section-label">Education</div>
+                    <div class="edu-card">
+                        <div class="edu-card-title">Johns Hopkins University</div>
+                        <div class="edu-card-sub">Masters in Artificial Intelligence</div>
+                        <div class="edu-card-year">Expected 2029</div>
+                    </div>
+                    <div class="edu-card">
+                        <div class="edu-card-title">University of California - Santa Cruz</div>
+                        <div class="edu-card-sub">Bachelors in Computer Science</div>
+                        <div class="edu-card-year">2021 – 2025</div>
+                    </div>
+                    <div class="edu-card">
+                        <div class="edu-card-title">CompTIA Security+</div>
+                        <div class="edu-card-sub">CompTIA</div>
+                        <div class="edu-card-year">August 2025</div>
+                    </div>
+                    <div class="edu-card">
+                        <div class="edu-card-title">Introduction to AI Agents</div>
+                        <div class="edu-card-sub">DataCamp</div>
+                        <div class="edu-card-year">2026</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="bg-section-label">Organizations</div>
+                    <div class="org-badges-row">
+                        <div class="org-badge">
+                            SWE
+                            <div class="org-badge-tooltip">Society of Women Engineers<br><span style="opacity:0.7">Member & Former Event Coordinator</span></div>
+                        </div>
+                        <div class="org-badge">
+                            RTC
+                            <div class="org-badge-tooltip">Rewriting the Code<br><span style="opacity:0.7">Member</span></div>
+                        </div>
+                        <div class="org-badge">
+                            SFDC
+                            <div class="org-badge-tooltip">Space Foundation<br><span style="opacity:0.7">Space Ambassador</span></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="org-shuffler">
+                        <div class="hobby-photo-wrap">
+                            <img src="Resources/VolunteerOfTheMonth2.png" alt="Hobby photo" class="hobby-photo active">
+                            <img src="Resources/DroneEducation.png" alt="Hobby photo" class="hobby-photo">
+                            <img src="Resources/L3HarrisSFDCEWeek.png" alt="Hobby photo" class="hobby-photo">
+                            <img src="Resources/GDSCWorkshop.png" alt="Hobby photo" class="hobby-photo">
+                        </div>
+                        <div class="hobby-dots">
+                            <div class="hobby-dot active"></div>
+                            <div class="hobby-dot"></div>
+                            <div class="hobby-dot"></div>
+                            <div class="hobby-dot"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bg-divider"></div>
+
+            <!-- ── Skills + Hobbies ── -->
+            <div class="bg-bottom-row">
+
+                <div>
+                    <div class="bg-section-label">Skills</div>
+                    <div class="skills-groups">
+                        <div>
+                            <div class="skills-group-label">Languages</div>
+                            <div class="skills-tags">
+                                <span class="skill-tag">Java</span>
+                                <span class="skill-tag">C</span>
+                                <span class="skill-tag">Python</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="skills-group-label">Frameworks</div>
+                            <div class="skills-tags">
+                                <span class="skill-tag">Spring Boot</span>
+                                <span class="skill-tag">Py4Web</span>
+                                <span class="skill-tag">Flutter</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="skills-group-label">Tools</div>
+                            <div class="skills-tags">
+                                <span class="skill-tag">Linux</span>
+                                <span class="skill-tag">NiFi</span>
+                                <span class="skill-tag">RabbitMQ</span>
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">Kubernetes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="bg-section-label">Outside of Work</div>
+
+                    <div id="hobby-shuffler">
+                        <div class="hobby-photo-wrap">
+                            <img src="Resources/DogHeartPainting.png" alt="Hobby photo" class="hobby-photo active">
+                            <img src="Resources/DogPawPainting.png" alt="Hobby photo" class="hobby-photo">
+                            <img src="Resources/Hiking.png" alt="Hobby photo" class="hobby-photo">
+                            <img src="Resources/RedwoodRun.png" alt="Hobby photo" class="hobby-photo">
+                        </div>
+                        <div class="hobby-dots">
+                            <div class="hobby-dot active"></div>
+                            <div class="hobby-dot"></div>
+                            <div class="hobby-dot"></div>
+                            <div class="hobby-dot"></div>
+                        </div>
+                    </div>
+                    <p class="hobby-description">
+                        Outside of work you can catch me running, hiking, painting, and reading!
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+    <section id="contact" class="contact-section">
+        <h2 class="section-title-contact">Contact Me</h2>
+        <p class="contact-intro">I'd love to hear from you—whether it's about a project, collaboration, or just saying hi.</p>
+        <br>
+        <a href="mailto:romasolapurkar14@gmail.com" class="contact-btn">Send an email</a>
+    </section>
+
+    <footer class="footer">
+        <p>© <span id="year"></span> Roma Solapurkar. Built with care.</p>
+    </footer>
+
+    <script src="scripts/about.js"></script>
+
+</body>
+
+</html>
+>>>>>>> Update_to_Pages
