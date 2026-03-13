@@ -147,7 +147,52 @@
             color: var(--accent);
             margin-bottom: 0.4rem;
         }
-        /* Writing */
+        /* ─── Blur-siblings on hover ─── */
+        /* Articles */
+        
+        .articles:has(.article-card:hover) .article-card:not(:hover) {
+            filter: blur(2px);
+            opacity: 0.55;
+            transition: filter 0.25s ease, opacity 0.25s ease, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        
+        .articles .article-card {
+            transition: filter 0.25s ease, opacity 0.25s ease, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        /* Into grid */
+        
+        .into-grid:has(.into-card:hover) .into-card:not(:hover) {
+            filter: blur(2px);
+            opacity: 0.55;
+            transition: filter 0.25s ease, opacity 0.25s ease, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        
+        .into-grid .into-card {
+            transition: filter 0.25s ease, opacity 0.25s ease, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        /* Takes */
+        
+        .takes:has(.take-card:hover) .take-card:not(:hover) {
+            filter: blur(2px);
+            opacity: 0.55;
+            transition: filter 0.25s ease, opacity 0.25s ease, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        
+        .takes .take-card {
+            transition: filter 0.25s ease, opacity 0.25s ease, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        /* Log */
+        
+        .log:has(.log-card:hover) .log-card:not(:hover) {
+            filter: blur(2px);
+            opacity: 0.55;
+            transition: filter 0.25s ease, opacity 0.25s ease, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        
+        .log .log-card {
+            transition: filter 0.25s ease, opacity 0.25s ease, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        /* ─── Writing ─── */
         
         .writing-section {
             margin-bottom: 4rem;
@@ -165,7 +210,6 @@
             border-radius: var(--radius);
             padding: 1.5rem 1.75rem;
             box-shadow: var(--shadow);
-            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
             display: flex;
             gap: 1.5rem;
             align-items: flex-start;
@@ -173,7 +217,7 @@
         
         .article-card:hover {
             border-color: var(--accent-soft);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
             transform: translateY(-3px);
         }
         
@@ -223,7 +267,7 @@
             background: var(--accent);
             color: var(--surface);
         }
-        /* Currently into */
+        /* ─── Currently into ─── */
         
         .into-section {
             margin-bottom: 4rem;
@@ -241,12 +285,11 @@
             border-radius: var(--radius);
             padding: 1.25rem 1.5rem;
             box-shadow: var(--shadow);
-            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
         }
         
         .into-card:hover {
             border-color: var(--accent-soft);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
             transform: translateY(-3px);
         }
         
@@ -272,7 +315,7 @@
             color: var(--text-muted);
             line-height: 1.55;
         }
-        /* Short takes */
+        /* ─── Short takes ─── */
         
         .takes-section {
             margin-bottom: 4rem;
@@ -293,12 +336,11 @@
             display: flex;
             gap: 1rem;
             align-items: flex-start;
-            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
         }
         
         .take-card:hover {
             border-color: var(--accent-soft);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
             transform: translateY(-2px);
         }
         
@@ -329,7 +371,7 @@
             color: var(--text);
             line-height: 1.65;
         }
-        /* Learning log */
+        /* ─── Learning log ─── */
         
         .log-section {
             margin-bottom: 4rem;
@@ -346,14 +388,15 @@
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 1.25rem 1.5rem;
-            box-shadow: var(--shadow);
-            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
         }
         
         .log-card:hover {
-            border-color: var(--accent-soft);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-            transform: translateY(-2px);
+            opacity: 1;
+            filter: blur(0) !important;
+            transform: scale(1.05) !important;
+            box-shadow: 0 16px 48px rgba(66, 133, 244, 0.28) !important;
         }
         
         .log-header {
@@ -406,7 +449,7 @@
             border-radius: 2px;
             transition: width 0.6s ease;
         }
-        /* Contact */
+        /* ─── Contact ─── */
         
         .contact-section {
             background: var(--accent);
@@ -453,7 +496,7 @@
             background: #5f8a75;
             transform: translateY(-1px);
         }
-        /* Footer */
+        /* ─── Footer ─── */
         
         .footer {
             text-align: center;
