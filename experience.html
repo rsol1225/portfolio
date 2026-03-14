@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experience — Roma Solapurkar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+         :root {
+            --bg: #faf8f5;
+            --surface: #fff;
+            --text: #1a1a1a;
+            --text-muted: #5c5c5c;
+            --accent: #2d5a4a;
+            --accent-soft: #e8f0ed;
+            --border: #e8e4df;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            --radius: 12px;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(250, 248, 245, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-home {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .nav-home:hover {
+            color: var(--accent);
+        }
+        
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent);
+        }
+        
+        main {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 6rem 1.5rem 4rem;
+        }
+        
+        .page-header {
+            margin-top: 4rem;
+            margin-bottom: 3.5rem;
+        }
+        
+        .page-header-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+        
+        .page-header-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2.25rem, 6vw, 3.5rem);
+            font-weight: 400;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header-title .accent {
+            color: var(--accent);
+            font-style: italic;
+        }
+        
+        .page-header-desc {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 52ch;
+            line-height: 1.65;
+        }
+        
+        .section-label {
+            font-size: 0.78rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+        
+        .section-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+        /* Featured roles */
+        
+        .featured-section {
+            margin-bottom: 4.5rem;
+        }
+        
+        .featured-roles {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .role-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+        }
+        
+        .role-card:hover {
+            border-color: var(--accent-soft);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+            transform: translateY(-3px);
+        }
+        
+        .role-header {
+            padding: 1.75rem 2rem 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .role-num {
+            font-family: 'Instrument Serif', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--border);
+            line-height: 1;
+            flex-shrink: 0;
+            padding-top: 4px;
+        }
+        
+        .role-meta {
+            flex: 1;
+        }
+        
+        .role-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.2rem;
+        }
+        
+        .role-company {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.2rem;
+        }
+        
+        .role-dates {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        .role-body {
+            padding: 0 2rem 1.75rem;
+        }
+        
+        .role-divider {
+            height: 1px;
+            background: var(--border);
+            margin-bottom: 1.5rem;
+        }
+        
+        .role-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .role-block-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .role-block-text {
+            font-size: 0.935rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+        
+        .role-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.5rem;
+        }
+        
+        .stack-tag {
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.3rem 0.7rem;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border-radius: 6px;
+        }
+        
+        .role-highlight {
+            background: var(--accent-soft);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .role-highlight-label {
+            font-size: 0.72rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+        
+        .role-highlight-text {
+            font-size: 0.935rem;
+            color: var(--text);
+            line-height: 1.65;
+        }
+        /* Blur siblings on hover */
+        
+        .featured-roles:has(.role-card:hover) .role-card:not(:hover) {
+            filter: blur(2px);
+            opacity: 0.55;
+            transition: filter 0.25s ease, opacity 0.25s ease, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        
+        .featured-roles .role-card {
+            transition: filter 0.25s ease, opacity 0.25s ease, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        /* Also section */
+        
+        .also-section {
+            margin-bottom: 4rem;
+        }
+        
+        .also-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        
+        .also-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            box-shadow: var(--shadow);
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        
+        .also-card:hover {
+            border-color: var(--accent-soft);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+            transform: translateY(-2px);
+        }
+        
+        .also-card-title {
+            font-size: 0.975rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.2rem;
+        }
+        
+        .also-card-company {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.15rem;
+        }
+        
+        .also-card-dates {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        .also-grid:has(.also-card:hover) .also-card:not(:hover) {
+            filter: blur(2px);
+            opacity: 0.55;
+            transition: filter 0.25s ease, opacity 0.25s ease;
+        }
+        
+        .also-grid .also-card {
+            transition: filter 0.25s ease, opacity 0.25s ease, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        /* Contact */
+        
+        .contact-section {
+            background: var(--accent);
+            color: var(--surface);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 4rem;
+            width: 100%;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+        }
+        
+        .section-title-contact {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: var(--border);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .contact-intro {
+            font-size: 1.05rem;
+            color: var(--accent-soft);
+            margin-bottom: 1.25rem;
+            max-width: 42ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--border);
+            color: var(--accent);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: background 0.2s, transform 0.2s;
+        }
+        
+        .contact-btn:hover {
+            background: #5f8a75;
+            transform: translateY(-1px);
+        }
+        /* Footer */
+        
+        .footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+        
+        @keyframes fade-up-in {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-up {
+            opacity: 0;
+            animation: fade-up-in 0.5s ease forwards;
+        }
+        
+        .fade-up:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+        
+        .fade-up:nth-child(2) {
+            animation-delay: 0.12s;
+        }
+        
+        .fade-up:nth-child(3) {
+            animation-delay: 0.19s;
+        }
+        
+        .fade-up:nth-child(4) {
+            animation-delay: 0.26s;
+        }
+        
+        @media(max-width:640px) {
+            .role-grid {
+                grid-template-columns: 1fr;
+            }
+            .role-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .role-num {
+                font-size: 1.75rem;
+            }
+            .also-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <a href="index.html" class="nav-home" aria-label="Home">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </a>
+        <a href="about.html" class="nav-link">Background</a>
+        <a href="experience.html" class="nav-link active">Experience</a>
+        <a href="index.html#projects" class="nav-link">Projects</a>
+        <a href="thinking.html" class="nav-link">Thinking</a>
+    </nav>
+
+    <main>
+
+        <header class="page-header">
+            <p class="page-header-label">Where I've worked</p>
+            <h1 class="page-header-title">Roles that <span class="accent">shaped</span> how I build</h1>
+            <p class="page-header-desc">Three experiences I go deep on — what I worked on, what I took away, and the stack I worked with.</p>
+        </header>
+
+        <!-- Featured roles -->
+        <section class="featured-section">
+            <p class="section-label">Featured</p>
+            <h2 class="section-title">In depth</h2>
+            <div class="featured-roles">
+
+                <!-- Role 1 -->
+                <article class="role-card fade-up">
+                    <div class="role-header">
+                        <div class="role-num">01</div>
+                        <div class="role-meta">
+                            <div class="role-title">Software Engineer Intern</div>
+                            <div class="role-company">Acme Corp</div>
+                            <div class="role-dates">May 2024 – Aug 2024 · 4 months</div>
+                        </div>
+                    </div>
+                    <div class="role-body">
+                        <div class="role-divider"></div>
+                        <div class="role-grid">
+                            <div class="role-block">
+                                <div class="role-block-label">What I worked on</div>
+                                <p class="role-block-text">Replace this with a description of your main project or responsibility. What problem were you solving? What did you build? Who did it affect?</p>
+                            </div>
+                            <div class="role-block">
+                                <div class="role-block-label">What I learned</div>
+                                <p class="role-block-text">Describe the biggest technical or professional insight from this role. What surprised you? What changed how you think about building software?</p>
+                            </div>
+                        </div>
+                        <div class="role-highlight">
+                            <div class="role-highlight-label">Key contribution</div>
+                            <p class="role-highlight-text">A single standout thing you shipped, improved, or figured out — something concrete enough to make someone lean forward. Numbers or impact help.</p>
+                        </div>
+                        <div class="role-block">
+                            <div class="role-block-label">Tech stack</div>
+                            <div class="role-stack">
+                                <span class="stack-tag">Python</span>
+                                <span class="stack-tag">React</span>
+                                <span class="stack-tag">PostgreSQL</span>
+                                <span class="stack-tag">Docker</span>
+                                <span class="stack-tag">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Role 2 -->
+                <article class="role-card fade-up">
+                    <div class="role-header">
+                        <div class="role-num">02</div>
+                        <div class="role-meta">
+                            <div class="role-title">Software Engineer Intern</div>
+                            <div class="role-company">Startup Co.</div>
+                            <div class="role-dates">Jan 2024 – Apr 2024 · 4 months</div>
+                        </div>
+                    </div>
+                    <div class="role-body">
+                        <div class="role-divider"></div>
+                        <div class="role-grid">
+                            <div class="role-block">
+                                <div class="role-block-label">What I worked on</div>
+                                <p class="role-block-text">Describe the context here — what kind of company was this, what was the team like, and what was your scope of work? Feel free to get specific.</p>
+                            </div>
+                            <div class="role-block">
+                                <div class="role-block-label">What I learned</div>
+                                <p class="role-block-text">What was the hardest part? What did working in a smaller environment teach you that you couldn't have learned elsewhere?</p>
+                            </div>
+                        </div>
+                        <div class="role-highlight">
+                            <div class="role-highlight-label">Key contribution</div>
+                            <p class="role-highlight-text">Your biggest win here. Be specific — a feature you owned, a bug you hunted down, a system you improved. What would have been different if you weren't there?</p>
+                        </div>
+                        <div class="role-block">
+                            <div class="role-block-label">Tech stack</div>
+                            <div class="role-stack">
+                                <span class="stack-tag">TypeScript</span>
+                                <span class="stack-tag">Node.js</span>
+                                <span class="stack-tag">MongoDB</span>
+                                <span class="stack-tag">Redis</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Role 3 -->
+                <article class="role-card fade-up">
+                    <div class="role-header">
+                        <div class="role-num">03</div>
+                        <div class="role-meta">
+                            <div class="role-title">Research Assistant</div>
+                            <div class="role-company">University Lab</div>
+                            <div class="role-dates">Sep 2023 – Dec 2023 · 4 months</div>
+                        </div>
+                    </div>
+                    <div class="role-body">
+                        <div class="role-divider"></div>
+                        <div class="role-grid">
+                            <div class="role-block">
+                                <div class="role-block-label">What I worked on</div>
+                                <p class="role-block-text">What was the research question or project? What was your role within it — were you collecting data, writing code, running experiments, or all of the above?</p>
+                            </div>
+                            <div class="role-block">
+                                <div class="role-block-label">What I learned</div>
+                                <p class="role-block-text">What did working in a research context teach you? How did it change how you think about uncertainty, rigor, or problem framing?</p>
+                            </div>
+                        </div>
+                        <div class="role-highlight">
+                            <div class="role-highlight-label">Key contribution</div>
+                            <p class="role-highlight-text">What did you leave behind? A pipeline, a dataset, a paper section, an experiment that moved the project forward? Describe it concretely.</p>
+                        </div>
+                        <div class="role-block">
+                            <div class="role-block-label">Tech stack</div>
+                            <div class="role-stack">
+                                <span class="stack-tag">Python</span>
+                                <span class="stack-tag">Pandas</span>
+                                <span class="stack-tag">scikit-learn</span>
+                                <span class="stack-tag">Jupyter</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Also section -->
+        <section class="also-section">
+            <p class="section-label">The full picture</p>
+            <h2 class="section-title">Also worth noting</h2>
+            <div class="also-grid">
+
+                <div class="also-card fade-up">
+                    <div class="also-card-title">Role Title</div>
+                    <div class="also-card-company">Company Name</div>
+                    <div class="also-card-dates">Month Year – Month Year</div>
+                </div>
+
+                <div class="also-card fade-up">
+                    <div class="also-card-title">Role Title</div>
+                    <div class="also-card-company">Company Name</div>
+                    <div class="also-card-dates">Month Year – Month Year</div>
+                </div>
+
+                <div class="also-card fade-up">
+                    <div class="also-card-title">Role Title</div>
+                    <div class="also-card-company">Company Name</div>
+                    <div class="also-card-dates">Month Year – Month Year</div>
+                </div>
+
+                <div class="also-card fade-up">
+                    <div class="also-card-title">Role Title</div>
+                    <div class="also-card-company">Company Name</div>
+                    <div class="also-card-dates">Month Year – Month Year</div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <section id="contact" class="contact-section">
+        <h2 class="section-title-contact">Contact Me</h2>
+        <p class="contact-intro">I'd love to hear from you — whether it's about a project, collaboration, or just saying hi.</p>
+        <br>
+        <a href="mailto:romasolapurkar14@gmail.com" class="contact-btn">Get in touch</a>
+    </section>
+
+    <footer class="footer">
+        <p>© <span id="year"></span> Roma Solapurkar. Built with care.</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
