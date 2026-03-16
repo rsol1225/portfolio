@@ -280,6 +280,41 @@
             color: var(--text);
             line-height: 1.65;
         }
+        /* Poster button */
+        
+        .role-footer {
+            padding: 1.25rem 2rem 1.75rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .poster-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.5rem 1.1rem;
+            background: var(--surface);
+            color: var(--accent);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1.5px solid var(--accent);
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s, transform 0.15s;
+        }
+        
+        .poster-btn:hover {
+            background: var(--accent);
+            color: var(--surface);
+            transform: translateY(-1px);
+        }
+        
+        .poster-btn svg {
+            flex-shrink: 0;
+        }
         /* Blur siblings on hover */
         
         .featured-roles:has(.role-card:hover) .role-card:not(:hover) {
@@ -335,6 +370,12 @@
         .also-card-dates {
             font-size: 0.8rem;
             color: var(--text-muted);
+        }
+        
+        .also-card-footer {
+            margin-top: 0.85rem;
+            padding-top: 0.85rem;
+            border-top: 1px solid var(--border);
         }
         
         .also-grid:has(.also-card:hover) .also-card:not(:hover) {
@@ -562,7 +603,7 @@
                     </div>
                 </article>
 
-                <!-- Role 3 -->
+                <!-- Role 3 — Breakthrough Tech (poster button added) -->
                 <article class="role-card fade-up">
                     <div class="role-header">
                         <div class="role-num">03</div>
@@ -602,6 +643,11 @@
                             </div>
                         </div>
                     </div>
+                    <div class="role-footer">
+                        <a href="Resources/Google 2A - Final Project Presentation.pdf" class="poster-btn" target="_blank" rel="noopener noreferrer">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>                            View Project Poster
+                        </a>
+                    </div>
                 </article>
 
             </div>
@@ -612,17 +658,31 @@
             <p class="section-label">The full picture</p>
             <h2 class="section-title">Also worth noting - volunteer and past experiences</h2>
             <div class="also-grid">
-
                 <div class="also-card fade-up">
                     <div class="also-card-title">Software Engineer Co-op</div>
                     <div class="also-card-company">Keysight Technologies</div>
                     <div class="also-card-dates">September 2024 - December 2024</div>
+                    <div class="also-card-footer">
+                        <a href="Resources/Keysight Poster.png" class="poster-btn" target="_blank" rel="noopener noreferrer">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>                            Poster
+                        </a>
+                        <a href="Resources/Keysight Desktop Application.pdf" class="poster-btn" target="_blank" rel="noopener noreferrer">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>                            Presentation
+                        </a>
+                    </div>
                 </div>
 
                 <div class="also-card fade-up">
                     <div class="also-card-title">Space Ambassdor</div>
                     <div class="also-card-company">Space Foundation</div>
                     <div class="also-card-dates">August 2025 - Present</div>
+                    <div class="also-card-footer">
+                        <h6>
+                            <li>New Volunteer of the Month (Feb. 2026)</li>
+                            <li>National Space Sustainiability Competition Judge</li>
+                        </h6>
+
+                    </div>
                 </div>
 
             </div>
