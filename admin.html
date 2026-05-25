@@ -323,8 +323,12 @@
         <!-- Config -->
         <div class="config-section">
             <div class="section-label">GitHub Token</div>
-            <div class="config-row">
+            <div class="config-row" style="margin-bottom: 12px">
                 <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false">
+            </div>
+            <div class="section-label">Anthropic API Key</div>
+            <div class="config-row">
+                <input type="password" id="anthropic-key" placeholder="sk-ant-xxxxxxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false">
             </div>
         </div>
 
@@ -391,7 +395,7 @@
         </div>
 
         <hr class="divider">
-        <div class="footer-note">updates content.json → triggers github actions → deploys to site</div>
+        <div class="footer-note">claude cleans text → updates content.json → triggers github actions → deploys to site</div>
 
     </div>
 
@@ -483,21 +487,95 @@
             }
         }
 
+        async function cleanWithClaude(anthropicKey, data) {
+            const prompt = `You are editing portfolio content for a personal site. Clean up and lightly rewrite the following six fields to sound concise, professional, and first-person. Fix grammar, improve clarity, remove filler — but keep the meaning exactly the same. Do not add opinions or extra context.
+
+Return ONLY valid JSON in this exact shape, no explanation, no markdown:
+{
+  "reading_topic": "...",
+  "reading_paragraph": "...",
+  "researching_topic": "...",
+  "researching_paragraph": "...",
+  "experiment_topic": "...",
+  "experiment_paragraph": "..."
+}
+
+Input:
+reading topic: ${data.thinking.reading.topic}
+reading paragraph: ${data.thinking.reading.paragraph}
+researching topic: ${data.thinking.researching.topic}
+researching paragraph: ${data.thinking.researching.paragraph}
+experiment topic: ${data.thinking.experiment.topic}
+experiment paragraph: ${data.thinking.experiment.paragraph}`;
+
+            const res = await fetch('https://api.anthropic.com/v1/messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': anthropicKey,
+                    'anthropic-version': '2023-06-01',
+                    'anthropic-dangerous-direct-browser-access': 'true'
+                },
+                body: JSON.stringify({
+                    model: 'claude-sonnet-4-20250514',
+                    max_tokens: 1000,
+                    messages: [{
+                        role: 'user',
+                        content: prompt
+                    }]
+                })
+            });
+
+            if (!res.ok) {
+                const err = await res.json().catch(() => ({}));
+                throw new Error(err.error ? .message || `Claude API failed: ${res.status}`);
+            }
+
+            const result = await res.json();
+            const text = result.content[0].text.trim();
+            const cleaned = JSON.parse(text);
+
+            return {
+                thinking: {
+                    reading: {
+                        topic: cleaned.reading_topic,
+                        paragraph: cleaned.reading_paragraph
+                    },
+                    researching: {
+                        topic: cleaned.researching_topic,
+                        paragraph: cleaned.researching_paragraph
+                    },
+                    experiment: {
+                        topic: cleaned.experiment_topic,
+                        paragraph: cleaned.experiment_paragraph
+                    }
+                }
+            };
+        }
+
         async function handleSubmit() {
-            const token = getToken();
-            if (!token) {
+            const ghToken = getToken();
+            const anthropicKey = document.getElementById('anthropic-key').value.trim();
+            if (!ghToken) {
                 setStatus('error', [{
                     text: 'GitHub token is required',
                     active: true
                 }]);
                 return;
             }
+            if (!anthropicKey) {
+                setStatus('error', [{
+                    text: 'Anthropic API key is required',
+                    active: true
+                }]);
+                return;
+            }
 
-            const data = getFormData();
+            const raw = getFormData();
             const fields = [
-                data.thinking.reading.topic, data.thinking.reading.paragraph,
-                data.thinking.researching.topic, data.thinking.researching.paragraph,
-                data.thinking.experiment.topic, data.thinking.experiment.paragraph
+                raw.thinking.reading.topic, raw.thinking.reading.paragraph,
+                raw.thinking.researching.topic, raw.thinking.researching.paragraph,
+                raw.thinking.experiment.topic, raw.thinking.experiment.paragraph
             ];
             if (fields.some(f => !f)) {
                 setStatus('error', [{
@@ -512,6 +590,23 @@
 
             try {
                 setStatus('loading', [{
+                    text: 'Cleaning text with Claude…',
+                    active: true
+                }, {
+                    text: 'Reading current content.json'
+                }, {
+                    text: 'Writing updated content.json'
+                }, {
+                    text: 'Triggering deploy workflow'
+                }]);
+
+                // Step 1: clean with Claude
+                const cleaned = await cleanWithClaude(anthropicKey, raw);
+
+                setStatus('loading', [{
+                    text: 'Cleaned text with Claude',
+                    done: true
+                }, {
                     text: 'Reading current content.json…',
                     active: true
                 }, {
@@ -520,10 +615,13 @@
                     text: 'Triggering deploy workflow'
                 }]);
 
-                // Step 1: get current SHA
-                const existing = await ghGet(token, JSON_PATH);
+                // Step 2: get current SHA
+                const existing = await ghGet(ghToken, JSON_PATH);
 
                 setStatus('loading', [{
+                    text: 'Cleaned text with Claude',
+                    done: true
+                }, {
                     text: 'Read content.json',
                     done: true
                 }, {
@@ -533,11 +631,14 @@
                     text: 'Triggering deploy workflow'
                 }]);
 
-                // Step 2: write new content
-                const newJson = JSON.stringify(data, null, 4);
-                await ghPut(token, JSON_PATH, newJson, existing.sha, 'Update thinking content via admin form');
+                // Step 3: write cleaned content
+                const newJson = JSON.stringify(cleaned, null, 4);
+                await ghPut(ghToken, JSON_PATH, newJson, existing.sha, 'Update thinking content via admin form');
 
                 setStatus('loading', [{
+                    text: 'Cleaned text with Claude',
+                    done: true
+                }, {
                     text: 'Read content.json',
                     done: true
                 }, {
@@ -548,10 +649,13 @@
                     active: true
                 }]);
 
-                // Step 3: trigger workflow
-                await triggerWorkflow(token);
+                // Step 4: trigger workflow
+                await triggerWorkflow(ghToken);
 
                 setStatus('success', [{
+                    text: 'Cleaned text with Claude',
+                    done: true
+                }, {
                     text: 'Read content.json',
                     done: true
                 }, {
