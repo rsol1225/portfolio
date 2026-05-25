@@ -44,11 +44,24 @@ def render(html, data):
 # GITHUB PUSH
 def push_to_github():
     commands = [
-        ["git", "add", "*.html"],
+        ["git", "add", "-u"],
+        ["git", "diff", "--cached", "--quiet"],  # check if anything is staged
+    ]
+    
+    # Stage files
+    subprocess.run(commands[0], capture_output=True, text=True)
+    
+    # Check if there's anything to commit
+    check = subprocess.run(commands[1], capture_output=True, text=True)
+    if check.returncode == 0:
+        print("Nothing to commit, skipping push.")
+        return
+    
+    # Commit and push
+    for cmd in [
         ["git", "commit", "-m", "Update rendered HTML"],
         ["git", "push"],
-    ]
-    for cmd in commands:
+    ]:
         result = subprocess.run(cmd, capture_output=True, text=True)
         if result.returncode != 0:
             print(f"Error running {' '.join(cmd)}:\n{result.stderr}")
