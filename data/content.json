@@ -1,0 +1,16 @@
+{
+    "thinking": {
+        "reading": {
+            "topic": "ReAct Framework",
+            "paragraph": "Learning about good prompting frameworks that are already built into models."
+        },
+        "researching": {
+            "topic": "Pipes and Filters Architecture",
+            "paragraph": "Digging into pipes and filters architecture as part of my series on architecture styles. Want to understand it properly before I write about it."
+        },
+        "experiment": {
+            "topic": "Agentic AI",
+            "paragraph": "Going through DataCamp's Agentic AI track, then building a research agent to make it stick."
+        }
+    }
+}
