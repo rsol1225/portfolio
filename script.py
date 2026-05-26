@@ -7,7 +7,7 @@ import subprocess
 
 # Your current directory setup
 TEMPLATE_DIR = "."
-OUTPUT_DIR = "."
+OUTPUT_DIR = "generated/"
 DATA_FILE = "data/content.json"
 
 # Load JSON data
