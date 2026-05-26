@@ -5,8 +5,8 @@
             "paragraph": "Learning about good prompting frameworks that are already built into models."
         },
         "researching": {
-            "topic": "Pipes and Filters Architecture",
-            "paragraph": "Digging into pipes and filters architecture as part of my series on architecture styles. Want to understand it properly before I write about it."
+            "topic": "Microkernels Architecture",
+            "paragraph": "Digging into microkernels architecture as part of my series on architecture styles. Want to understand it properly before I write about it."
         },
         "experiment": {
             "topic": "Agentic AI",
