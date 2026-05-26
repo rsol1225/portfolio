@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thinking — Roma Solapurkar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+         :root {
+            --bg: #faf8f5;
+            --surface: #fff;
+            --text: #1a1a1a;
+            --text-muted: #5c5c5c;
+            --accent: #2d5a4a;
+            --accent-soft: #e8f0ed;
+            --border: #e8e4df;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            --radius: 12px;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(250, 248, 245, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-home {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .nav-home:hover {
+            color: var(--accent);
+        }
+        
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent);
+        }
+        
+        .nav-link.active {
+            color: var(--accent);
+        }
+        
+        main {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 6rem 1.5rem 4rem;
+        }
+        
+        .page-header {
+            margin-top: 4rem;
+            margin-bottom: 3.5rem;
+        }
+        
+        .page-header-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+        
+        .page-header-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2.25rem, 6vw, 3.5rem);
+            font-weight: 400;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header-title .accent {
+            color: var(--accent);
+            font-style: italic;
+        }
+        
+        .page-header-desc {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 52ch;
+            line-height: 1.65;
+        }
+        
+        .section-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .section-label {
+            font-size: 0.78rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+        /* ─── Blur-siblings on hover ─── */
+        /* Articles */
+        
+        .articles:has(.article-card:hover) .article-card:not(:hover) {
+            opacity: 0.55;
+            transition: filter 0.25s ease, opacity 0.25s ease, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        
+        .articles .article-card {
+            transition: filter 0.25s ease, opacity 0.25s ease, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        /* Into grid */
+        
+        .into-grid:has(.into-card:hover) .into-card:not(:hover) {
+            opacity: 0.55;
+            transition: filter 0.25s ease, opacity 0.25s ease, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        
+        .into-grid .into-card {
+            transition: filter 0.25s ease, opacity 0.25s ease, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        /* Takes */
+        
+        .takes:has(.take-card:hover) .take-card:not(:hover) {
+            opacity: 0.55;
+            transition: filter 0.25s ease, opacity 0.25s ease, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        
+        .takes .take-card {
+            transition: filter 0.25s ease, opacity 0.25s ease, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        /* Log */
+        
+        .log:has(.log-card:hover) .log-card:not(:hover) {
+            opacity: 0.55;
+            transition: filter 0.25s ease, opacity 0.25s ease, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        
+        .log .log-card {
+            transition: filter 0.25s ease, opacity 0.25s ease, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        /* ─── Writing ─── */
+        
+        .writing-section {
+            margin-bottom: 4rem;
+        }
+        
+        .articles {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        
+        .article-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem 1.75rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .article-card:hover {
+            border-color: var(--accent-soft);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+            transform: translateY(-3px);
+        }
+        
+        .article-num {
+            font-family: 'Instrument Serif', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--border);
+            line-height: 1;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+        
+        .article-body {
+            flex: 1;
+        }
+        
+        .article-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.35rem;
+        }
+        
+        .article-why {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin-bottom: 0.75rem;
+        }
+        
+        .article-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.9rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--accent);
+            background: var(--accent-soft);
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        
+        .article-link:hover {
+            background: var(--accent);
+            color: var(--surface);
+        }
+        /* ─── Currently into ─── */
+        
+        .into-section {
+            margin-bottom: 4rem;
+        }
+        
+        .into-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        
+        .into-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .into-card:hover {
+            border-color: var(--accent-soft);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+            transform: translateY(-3px);
+        }
+        
+        .into-type {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .into-main {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.35rem;
+            line-height: 1.35;
+        }
+        
+        .into-sub {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+        /* ─── Short takes ─── */
+        
+        .takes-section {
+            margin-bottom: 4rem;
+        }
+        
+        .takes {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        
+        .take-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        
+        .take-card:hover {
+            border-color: var(--accent-soft);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+            transform: translateY(-2px);
+        }
+        
+        .take-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+            margin-top: 7px;
+        }
+        
+        .take-content {
+            flex: 1;
+        }
+        
+        .take-topic {
+            font-size: 0.78rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 0.35rem;
+        }
+        
+        .take-text {
+            font-size: 0.975rem;
+            color: var(--text);
+            line-height: 1.65;
+        }
+        /* ─── Learning log ─── */
+        
+        .log-section {
+            margin-bottom: 4rem;
+        }
+        
+        .log {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        
+        .log-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+        
+        .log-card:hover {
+            opacity: 1;
+            transform: scale(1.05) !important;
+            box-shadow: 0 16px 48px rgba(66, 133, 244, 0.28) !important;
+        }
+        
+        .log-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.35rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .log-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .log-status-pill {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.65rem;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+        
+        .log-status-pill.upcoming {
+            background: var(--bg);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+        
+        .log-note {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 0.875rem;
+        }
+        
+        .log-bar-wrap {
+            height: 3px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .log-bar {
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width 0.6s ease;
+        }
+        /* ─── Contact ─── */
+        
+        .contact-section {
+            background: var(--accent);
+            color: var(--surface);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 4rem;
+            width: 100%;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+        }
+        
+        .section-title-contact {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: var(--border);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .contact-intro {
+            font-size: 1.05rem;
+            color: var(--accent-soft);
+            margin-bottom: 1.25rem;
+            max-width: 42ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--border);
+            color: var(--accent);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: background 0.2s, transform 0.2s;
+        }
+        
+        .contact-btn:hover {
+            background: #5f8a75;
+            transform: translateY(-1px);
+        }
+        /* ─── Footer ─── */
+        
+        .footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+        
+        @keyframes fade-up-in {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-up {
+            opacity: 0;
+            animation: fade-up-in 0.5s ease forwards;
+        }
+        
+        .fade-up:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+        
+        .fade-up:nth-child(2) {
+            animation-delay: 0.12s;
+        }
+        
+        .fade-up:nth-child(3) {
+            animation-delay: 0.19s;
+        }
+        
+        .fade-up:nth-child(4) {
+            animation-delay: 0.26s;
+        }
+        
+        @media (max-width: 640px) {
+            .article-card {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .article-num {
+                font-size: 1.75rem;
+            }
+            .into-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <a href="index.html#about" class="nav-home" aria-label="Home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+        </a>
+        <a href="about.html" class="nav-link">Background</a>
+        <a href="experience.html" class="nav-link">Experience</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="writing.html" class="nav-link active">Thinking</a>
+    </nav>
+
+    <main>
+
+        <header class="page-header">
+            <p class="page-header-label">How I think</p>
+            <h1 class="page-header-title">Writing, learning,<br>and <span class="accent">thinking out loud</span></h1>
+            <p class="page-header-desc">A running snapshot of what I'm reading, building towards, and forming opinions on.</p>
+        </header>
+
+        <!-- Writing -->
+        <section class="writing-section">
+            <p class="section-label">Writing</p>
+            <h2 class="section-title">Published articles</h2>
+            <div class="articles">
+                <article class="article-card fade-up">
+                    <div class="article-num">01</div>
+                    <div class="article-body">
+                        <h3 class="article-title">Understanding Modular Architecture</h3>
+                        <p class="article-why">After seeing a modular monolith migrate to microservices, I had more questions than answers. This was me working through them.</p>
+                        <a href="https://medium.com/@romasblog/understanding-modular-architecture-5ba22c1592d7" class="article-link" target="_blank" rel="noopener noreferrer">
+                            Read on Medium
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+                </article>
+                <article class="article-card fade-up">
+                    <div class="article-num">02</div>
+                    <div class="article-body">
+                        <h3 class="article-title">Application Architecture Styles: Layered Architecture</h3>
+                        <p class="article-why">A coworker introduced me to layered architecture and I realized I had a blind spot. This is me working through it. A first in a series on architecture styles!</p>
+                        <a href="https://medium.com/@romasblog/application-architecture-styles-layered-architecture-8558329465ea" class="article-link" target="_blank" rel="noopener noreferrer">
+                            Read on Medium
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+                </article>
+                <article class="article-card fade-up">
+                    <div class="article-num">03</div>
+                    <div class="article-body">
+                        <h3 class="article-title">Application Architecture Styles: Hexagonal/Onion Architecture</h3>
+                        <p class="article-why">My second article in a series on architecture styles!</p>
+                        <a href="https://medium.com/@romasblog/application-architecture-style-hexagonal-architecture-26345612a0e3" class="article-link" target="_blank" rel="noopener noreferrer">
+                            Read on Medium
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Currently into -->
+        <section class="into-section">
+            <p class="section-label">Right now</p>
+            <h2 class="section-title">What I'm into</h2>
+            <div class="into-grid">
+                <div class="into-card fade-up">
+                    <div class="into-type">Reading</div>
+                    <div class="into-main">ReAct Framework</div>
+                    <p class="into-sub">Learning about good prompting frameworks that are already built into models.</p>
+                </div>
+                <div class="into-card fade-up">
+                    <div class="into-type">Researching</div>
+                    <div class="into-main">Microkernels Architecture</div>
+                    <p class="into-sub">Digging into microkernels architecture as part of my series on architecture styles. Want to understand it properly before I write about it.</p>
+                </div>
+                <div class="into-card fade-up">
+                    <div class="into-type">Experimenting with</div>
+                    <div class="into-main">Agentic AI</div>
+                    <p class="into-sub">Going through DataCamp's Agentic AI track, then building a research agent to make it stick.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Short takes -->
+        <section class="takes-section">
+            <p class="section-label">Opinions</p>
+            <h2 class="section-title">Short takes</h2>
+            <div class="takes">
+                <div class="take-card fade-up">
+                    <div class="take-dot"></div>
+                    <div class="take-content">
+                        <div class="take-topic">On AI</div>
+                        <p class="take-text">The best thing about agentic AI isn't the automation. It's that building with it forces you to think more carefully about what a "task" actually is.</p>
+                    </div>
+                </div>
+                <div class="take-card fade-up">
+                    <div class="take-dot"></div>
+                    <div class="take-content">
+                        <div class="take-topic">On architecture</div>
+                        <p class="take-text">I'd rather spend an extra day getting the architecture right than a week untangling it later. That said, I know when a deadline is a deadline.</p>
+                    </div>
+                </div>
+                <div class="take-card fade-up">
+                    <div class="take-dot"></div>
+                    <div class="take-content">
+                        <div class="take-topic">On engineering</div>
+                        <p class="take-text">Most engineers underrate the value of slowing down to research first. Taking time to understand ACID compliance before touching our database saved us from a class of bugs we never had to debug.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning log -->
+        <section class="log-section">
+            <p class="section-label">In progress</p>
+            <h2 class="section-title">Learning log</h2>
+            <div class="log">
+                <div class="log-card fade-up">
+                    <div class="log-header">
+                        <div class="log-title">AI agents</div>
+                        <span class="log-status-pill">In progress</span>
+                    </div>
+                    <p class="log-note">Going through DataCamp's Agentic AI track to understand how agents work under the hood — then building my own projects to make it stick.</p>
+                    <div class="log-bar-wrap">
+                        <div class="log-bar" style="width: 60%"></div>
+                    </div>
+                </div>
+                <div class="log-card fade-up">
+                    <div class="log-header">
+                        <div class="log-title">Systems design</div>
+                        <span class="log-status-pill">In progress</span>
+                    </div>
+                    <p class="log-note">Not just for interviews! Designing at scale forces clearer thinking about tradeoffs I usually gloss over.</p>
+                    <div class="log-bar-wrap">
+                        <div class="log-bar" style="width: 40%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <section id="contact" class="contact-section">
+        <h2 class="section-title-contact">Contact Me</h2>
+        <p class="contact-intro">I'd love to hear from you — whether it's about a project, collaboration, or just saying hi.</p>
+        <br>
+        <a href="mailto:romasolapurkar14@gmail.com" class="contact-btn">Get in touch</a>
+    </section>
+
+    <footer class="footer">
+        <p>© <span id="year"></span> Roma Solapurkar. Built with care.</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+
+</html>
