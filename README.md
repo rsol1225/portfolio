@@ -4,4 +4,4 @@ Here's the final product: https://rsol1225.github.io/portfolio/
 # Mini-automation with scripting:
 I wanted to automate updates to my “Thinking” section, so I built a small workflow that reads entries from a JSON file and programmatically updates the site content. Once changes are generated, the updates are automatically pushed through a GitHub Actions pipeline for deployment.
 
-Every time you run the script it reads from templates/, fills in the values from content.json, and writes the result to the root — so your placeholders are always safe.
+Every time you run the script it reads from templates/, fills in the values from content.json, and writes the result to the root, so my placeholders are always safe.
