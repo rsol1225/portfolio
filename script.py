@@ -6,8 +6,13 @@ import subprocess
 # REPLACE HTML WITH CONTENT.JSON
 
 # Your current directory setup
+# Before
 TEMPLATE_DIR = "."
-OUTPUT_DIR = "generated/"
+OUTPUT_DIR = "."
+
+# After
+TEMPLATE_DIR = "templates/"
+OUTPUT_DIR = "."
 DATA_FILE = "data/content.json"
 
 # Load JSON data
